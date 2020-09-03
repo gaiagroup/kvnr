@@ -1,0 +1,13 @@
+{
+  "name": "gaiagroup/kvnr-validator",
+  "description": "A PHP class for validating German KVNR code (aka Krankenversichertennummer)",
+  "authors": [
+    {
+      "name": "Davide Danna",
+      "email": "davide.danna@gaia-group.com"
+    }
+  ],
+  "require": {
+    "php": "^7.4"
+  }
+}
