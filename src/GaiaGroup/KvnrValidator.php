@@ -1,6 +1,6 @@
 <?php
 
-namespace gaiagroup;
+namespace GaiaGroup;
 
 /**
  * Class for KVNR code validation
