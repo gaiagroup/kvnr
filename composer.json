@@ -1,6 +1,6 @@
 {
   "name": "gaiagroup/kvnr-validator",
-  "description": "A PHP class for validating German KVNR code (aka Krankenversichertennummer)",
+  "description": "A PHP class for validating German KVNR code (aka Krankenversichertennummer), made by GAIA (https://gaia-group.com/)",
   "type": "library",
   "authors": [
     {
@@ -15,7 +15,9 @@
     "phpunit/phpunit": "^9"
   },
   "autoload": {
-    "psr-4": {"GaiaGroup\\": "src/"}
+    "psr-4": {
+      "GaiaGroup\\": "src/"
+    }
   },
   "extra": {
     "branch-alias": {
