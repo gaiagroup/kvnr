@@ -16,5 +16,10 @@
   },
   "autoload": {
     "psr-4": {"GaiaGroup\\": "src/"}
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0.x-dev"
+    }
   }
 }
