@@ -22,13 +22,12 @@ install:
 
 script:
   # executes PHPUnit tests
-  - docker container exec -it KvnrValidator-php /var/www/html/vendor/bin/phpunit -v --debug --stop-on-failure --stop-on-error
+  - docker container exec -it KvnrValidator-php vendor/bin/phpunit -v --debug --stop-on-failure --stop-on-error
 
 after_failure:
-  # copy PHP and Docker logs to /logs DIR
+  # copy local and Docker logs to /logs DIR
   - sudo mkdir /logs
-  - sudo docker container logs php > /logs/php-logs.log
+  - sudo docker container logs php > /logs/docker-container.log
   - sudo cp -a /var/log/php* /logs/
-  - sudo cp -a $TRAVIS_BUILD_DIR/project/site/storage/logs/. /logs/
   - sudo chown -R travis:travis /logs
 
