@@ -18,16 +18,14 @@ install:
   - cd $TRAVIS_BUILD_DIR/docker
   - docker-compose up -d
 
-#before_script:
+before_script:
+  - skip
 
 script:
   # executes PHPUnit tests
+  - cd $TRAVIS_BUILD_DIR
   - docker container exec -it KvnrValidator-php vendor/bin/phpunit -v --debug --stop-on-failure --stop-on-error
 
 after_failure:
-  # copy local and Docker logs to /logs DIR
-  - sudo mkdir /logs
-  - sudo docker container logs php > /logs/docker-container.log
-  - sudo cp -a /var/log/php* /logs/
-  - sudo chown -R travis:travis /logs
+  - skip
 
