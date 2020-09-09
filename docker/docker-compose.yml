@@ -1,0 +1,7 @@
+version: '3.7'
+services:
+  php:
+    build: ./php
+    container_name: KvnrValidator-php
+    volumes:
+      - ../:/var/www/html
