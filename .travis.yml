@@ -1,0 +1,34 @@
+language: generic
+
+matrix:
+  include:
+    - os: linux
+      dist: xenial
+      sudo: required
+
+branches:
+  only:
+    - master
+
+services:
+  - docker
+
+install:
+  # starts Docker container
+  - cd $TRAVIS_BUILD_DIR/docker
+  - docker-compose up -d
+
+#before_script:
+
+script:
+  # executes PHPUnit tests
+  - docker container exec -it KvnrValidator-php /var/www/html/vendor/bin/phpunit -v --debug --stop-on-failure --stop-on-error
+
+after_failure:
+  # copy PHP and Docker logs to /logs DIR
+  - sudo mkdir /logs
+  - sudo docker container logs php > /logs/php-logs.log
+  - sudo cp -a /var/log/php* /logs/
+  - sudo cp -a $TRAVIS_BUILD_DIR/project/site/storage/logs/. /logs/
+  - sudo chown -R travis:travis /logs
+
