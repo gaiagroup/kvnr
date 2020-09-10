@@ -13,7 +13,7 @@ namespace GaiaGroup;
 /**
  *  KVNr utility tools class
  */
-class KVNr
+class KVNR
 {
     /**
      * Checks if given KVNR code is correct by validating its format and by verifying its checksum
