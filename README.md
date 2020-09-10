@@ -14,6 +14,18 @@ The KVNR code is printed on the [Elektronische Gesundheitskarte](https://de.wiki
 composer require gaiagroup/kvnr
 ```
 
+## Contributing
+Feel free to submit issues and enhancement requests. If you would like to contribute to the code we encourage you to
+open a pull request. In general, we follow the "fork-and-pull" Git workflow.
+ - Fork the repo on GitHub
+ - Clone the project to your own machine
+ - Commit changes to your own branch
+ - Push your work back up to your fork
+ - Submit a Pull request so that we can review your changes
+
+We do not require you to assign the copyright of your contributions, you retain the copyright. We do require that you
+make your contributions available under the MIT license in order for it be included in the main repo.
+
 ## Credits
 This project is maintained by [GAIA](https://gaia-group.com/), a global pioneer in digital therapeutics
 
