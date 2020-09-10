@@ -11,13 +11,12 @@
 namespace GaiaGroup;
 
 /**
- * Class for KVNR code validation
+ *  KVNr utility tools class
  */
-class KvnrValidator
+class KVNr
 {
     /**
-     * Checks if given KVNR code is correct by validating its format and by verifying
-     * its checksum (ref: https://de.wikipedia.org/wiki/Krankenversichertennummer)
+     * Checks if given KVNR code is correct by validating its format and by verifying its checksum
      *
      * @param string $kvnr KVNR string to be validated
      *
@@ -25,32 +24,28 @@ class KvnrValidator
      */
     public static function validate(string $kvnr): bool
     {
-        $isValid = false;
-
         // checks KVNR format using regex
         if (preg_match("/^[A-Z][0-9]{9}$/", $kvnr)) {
             // computes CRC digit using KVNR string trimmed out of the last digit
-            $kvnrCrc = self::computesKvnrCrcDigit(substr($kvnr, 0, strlen($kvnr) - 1));
+            $kvnrCrc = self::computeCrc(substr($kvnr, 0, strlen($kvnr) - 1));
 
             // compares computed CRC values with last digit in provided KVNR
-            $isValid = $kvnr[9] == $kvnrCrc;
+            return $kvnr[9] == $kvnrCrc;
         }
 
-        return $isValid;
+        return false;
     }
 
     /**
-     * computes the KVNR CRC digit of a given string, if the format of provided string is not valid
-     * the function returns -1
+     * returns the CRC digit for a given KVNR code. If provided string has not a valid format
+     * the method returns -1 (ref: https://de.wikipedia.org/wiki/Krankenversichertennummer)
      *
-     * @param string $kvnr KVNR string composed by capital letter followed by 8 digits
+     * @param string $kvnr KVNR string
      *
-     * @return int CRC digit, if code is invalid returns -1
+     * @return int a single digit integer, if provided KVNr code is not in a valid format this method returns -1
      */
-    private static function computesKvnrCrcDigit(string $kvnr)
+    private static function computeCrc(string $kvnr)
     {
-        $crc = -1;
-
         // converts first character of KVNR to integer using ASCII
         $digitChar = ord($kvnr[0]) - 64;
 
@@ -79,17 +74,13 @@ class KvnrValidator
                 $kvnrDigitWeighted = $kvnrDigits[$i] * $weight;
 
                 // if resulting number is >= 10 then it's digit are summed
-                if ($kvnrDigitWeighted < 10) {
-                    $kvnrDigitsWeighted[$i] = $kvnrDigitWeighted;
-                } else {
-                    $kvnrDigitsWeighted[$i] = array_sum(str_split($kvnrDigitWeighted));
-                }
+                $kvnrDigitsWeighted[$i] = array_sum(str_split($kvnrDigitWeighted));
             }
 
             // computes CRC by summing each item in array and applying module-10
-            $crc = array_sum($kvnrDigitsWeighted) % 10;
+            return array_sum($kvnrDigitsWeighted) % 10;
         }
 
-        return $crc;
+        return -1;
     }
 }

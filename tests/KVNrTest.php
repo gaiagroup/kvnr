@@ -8,10 +8,10 @@
  * Created using PhpStorm at 08.09.20 11:32
  */
 
+use GaiaGroup\KVNr;
 use PHPUnit\Framework\TestCase;
-use GaiaGroup\KvnrValidator;
 
-class KvnrValidatorTest extends TestCase
+class KVNrTest extends TestCase
 {
     /**
      * Tests KVN validation method with a set of known KVNR codes
@@ -22,7 +22,7 @@ class KvnrValidatorTest extends TestCase
      */
     public function testKvnrCodeIsValid(string $code, bool $expected)
     {
-        $result = KvnrValidator::validate($code);
+        $result = KVNr::validate($code);
         $this->assertSame($expected, $result);
     }
 

@@ -1,31 +1,14 @@
-language: generic
+language: php
 
-matrix:
-  include:
-    - os: linux
-      dist: xenial
-      sudo: required
+php:
+  - 7.0
 
 branches:
   only:
     - master
 
-services:
-  - docker
-
 install:
-  # starts Docker container
-  - cd $TRAVIS_BUILD_DIR/docker
-  - docker-compose up -d
-
-before_script:
-  - skip
+  - composer install
 
 script:
-  # executes PHPUnit tests
-  - cd $TRAVIS_BUILD_DIR
-  - docker container exec -it KvnrValidator-php vendor/bin/phpunit -v --debug --stop-on-failure --stop-on-error
-
-after_failure:
-  - skip
-
+  - phpunit -v --testdox --stop-on-failure --stop-on-error

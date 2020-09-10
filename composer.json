@@ -1,8 +1,12 @@
 {
-  "name": "gaiagroup/kvnr-validator",
-  "description": "A PHP class for validating German KVNR code (aka Krankenversichertennummer), made by GAIA (https://gaia-group.com/)",
+  "name": "gaiagroup/kvnr",
+  "description": "A PHP library for Germany KVNR number validation, made by GAIA (https://gaia-group.com/)",
   "type": "library",
   "authors": [
+    {
+      "name": "Markus Tenghamn",
+      "email": "markus.tenghamn@gaia-group.com"
+    },
     {
       "name": "Davide Danna",
       "email": "davide.danna@gaia-group.com"
