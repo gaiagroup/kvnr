@@ -18,3 +18,6 @@ This project is maintained by [GAIA](https://gaia-group.com/), a global pioneer 
 ## License
 This is an open-source project licensed under the
 [MIT License](https://github.com/gaiagroup/kvnr-validator/blob/master/LICENSE).
+
+
+[![Build Status](https://travis-ci.com/gaiagroup/kvnr.svg?branch=master)](https://travis-ci.com/gaiagroup/kvnr)
