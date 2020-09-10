@@ -1,4 +1,7 @@
-# KVNr
+[![Build Status](https://travis-ci.com/gaiagroup/kvnr.svg?branch=master)](https://travis-ci.com/gaiagroup/kvnr)
+
+
+# KVNR
 A checksum validation library for the German KVNR code - Krankenversichertennummer
 
 KVNr (also known as [Krankenversichertennummer](https://de.wikipedia.org/wiki/Krankenversichertennummer)) is an 
@@ -14,10 +17,6 @@ composer require gaiagroup/kvnr
 ## Credits
 This project is maintained by [GAIA](https://gaia-group.com/), a global pioneer in digital therapeutics
 
-
 ## License
 This is an open-source project licensed under the
 [MIT License](https://github.com/gaiagroup/kvnr-validator/blob/master/LICENSE).
-
-
-[![Build Status](https://travis-ci.com/gaiagroup/kvnr.svg?branch=master)](https://travis-ci.com/gaiagroup/kvnr)
