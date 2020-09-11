@@ -11,12 +11,12 @@
 namespace GaiaGroup;
 
 /**
- *  KVNr utility tools class
+ *  KVNR utility tools class
  */
 class KVNR
 {
     /**
-     * Checks if given KVNR code is correct by validating its format and by verifying its checksum
+     * Checks KVNR string format and its check digit
      *
      * @param string $kvnr KVNR string to be validated
      *
@@ -26,25 +26,25 @@ class KVNR
     {
         // checks KVNR format using regex
         if (preg_match("/^[A-Z][0-9]{9}$/", $kvnr)) {
-            // computes CRC digit using KVNR string trimmed out of the last digit
-            $kvnrCrc = self::computeCrc(substr($kvnr, 0, strlen($kvnr) - 1));
+            // computes check digit
+            $checkDigit = self::computeCheckDigit(substr($kvnr, 0, strlen($kvnr) - 1));
 
-            // compares computed CRC values with last digit in provided KVNR
-            return $kvnr[9] == $kvnrCrc;
+            // compares computed check digit with last digit in provided KVNR
+            return $kvnr[9] == $checkDigit;
         }
 
         return false;
     }
 
     /**
-     * returns the CRC digit for a given KVNR code. If provided string has not a valid format
-     * the method returns -1 (ref: https://de.wikipedia.org/wiki/Krankenversichertennummer)
+     * returns the check digit for a given KVNR code.
+     * If provided KVNR is not in a valid format it returns -1
      *
      * @param string $kvnr KVNR string
      *
      * @return int a single digit integer, if provided KVNr code is not in a valid format this method returns -1
      */
-    private static function computeCrc(string $kvnr)
+    private static function computeCheckDigit(string $kvnr)
     {
         // converts first character of KVNR to integer using ASCII
         $digitChar = ord($kvnr[0]) - 64;
@@ -77,7 +77,7 @@ class KVNR
                 $kvnrDigitsWeighted[$i] = array_sum(str_split($kvnrDigitWeighted));
             }
 
-            // computes CRC by summing each item in array and applying module-10
+            // computes check digit by summing each item in array and applying module-10
             return array_sum($kvnrDigitsWeighted) % 10;
         }
 
