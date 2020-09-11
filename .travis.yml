@@ -1,0 +1,14 @@
+language: php
+
+php:
+  - 7.3
+
+branches:
+  only:
+    - master
+
+install:
+  - composer install
+
+script:
+  - phpunit -v --testdox --stop-on-failure --stop-on-error
