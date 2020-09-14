@@ -2,14 +2,19 @@
   "name": "gaiagroup/kvnr",
   "description": "A PHP library for Germany KVNR number validation, made by GAIA (https://gaia-group.com/)",
   "type": "library",
+  "license": "MIT",
   "authors": [
     {
       "name": "Markus Tenghamn",
-      "email": "markus.tenghamn@gaia-group.com"
+      "email": "markus.tenghamn@gaia-group.com",
+      "homepage": "https://gaia-group.com",
+      "role": "Developer"
     },
     {
       "name": "Davide Danna",
-      "email": "davide.danna@gaia-group.com"
+      "email": "davide.danna@gaia-group.com",
+      "homepage": "https://gaia-group.com",
+      "role": "Developer"
     }
   ],
   "require": {
